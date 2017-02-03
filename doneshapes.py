@@ -230,11 +230,11 @@ def circle(centerX: float, centerY: float, radius: float) ->Outline:
 
 @make_coro     
 @outline     
-def rect(lowerLeftX: float, lowerLeftY: float, width: float, height: float) ->Outline:
+def rect(lowerLeftX: float, lowerLeftY: float, X_width: float, Y_height: float) ->Outline:
     rect = [Point(lowerLeftX, lowerLeftY)]
-    rect.append(Point(lowerLeftX+width, lowerLeftY))
-    rect.append(Point(lowerLeftX+width, lowerLeftY+height))
-    rect.append(Point(lowerLeftX, lowerLeftY+height))
+    rect.append(Point(lowerLeftX+X_width, lowerLeftY))
+    rect.append(Point(lowerLeftX+X_width, lowerLeftY+Y_height))
+    rect.append(Point(lowerLeftX, lowerLeftY+Y_height))
     rectLG = Outline(None)
     rectLG.addLinesFromPoints(rect)
     rectLG.closeShape()

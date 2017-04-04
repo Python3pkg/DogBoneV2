@@ -1,3 +1,8 @@
+#This program has been deprecated. [SciSlice](https://github.com/VanHulleOne/SciSlice) is now the latest version.
+SciSlice is the re-branded latest version of DogBone. It has all of the old features
+and a few new ones. All bug fixes and feature requests will be pushed there.  
+*[SciSlice](https://github.com/VanHulleOne/SciSlice), the Scientific Slicer.*
+
 # DogBone V2.x
 
 DogBone is a program that creates custom tool paths for Fused Filament Fabrication

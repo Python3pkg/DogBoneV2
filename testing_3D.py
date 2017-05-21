@@ -36,13 +36,13 @@ class Wireframe:
     def outputNodes(self):
         print("\n --- Nodes --- ")
         for i, node in enumerate(self.nodes):
-            print(" %d: (%.2f, %.2f, %.2f)" % (i, node.x, node.y, node.z))
+            print((" %d: (%.2f, %.2f, %.2f)" % (i, node.x, node.y, node.z)))
             
     def outputEdges(self):
         print("\n --- Edges --- ")
         for i, edge in enumerate(self.edges):
-            print(" %d: (%.2f, %.2f, %.2f)" % (i, edge.start.x, edge.start.y, edge.start.z),)
-            print("to (%.2f, %.2f, %.2f)" % (edge.stop.x,  edge.stop.y,  edge.stop.z))
+            print((" %d: (%.2f, %.2f, %.2f)" % (i, edge.start.x, edge.start.y, edge.start.z),))
+            print(("to (%.2f, %.2f, %.2f)" % (edge.stop.x,  edge.stop.y,  edge.stop.z)))
 
     def translate(self, axis, d):
         """ Add constant 'd' to the coordinate 'axis' of each node of a wireframe """
@@ -134,8 +134,8 @@ class ProjectionViewer:
         self.nodeRadius = 1
         
         self.layer_part = pickle.load(open('layer_part', 'rb'))
-        print(self.layer_part[0])
-        print(self.layer_part[len(self.layer_part)-1])
+        print((self.layer_part[0]))
+        print((self.layer_part[len(self.layer_part)-1]))
         
         self.MODEL = 'model'
         self.start = 0
@@ -202,9 +202,9 @@ class ProjectionViewer:
             if self.first:
                 self.end = len(self.layer_part)-1
                 self.first = False
-                print(len(self.wireframes[self.MODEL].edges))
-                print(self.layer_part[self.start][2])
-                print(self.layer_part[self.end][3])
+                print((len(self.wireframes[self.MODEL].edges)))
+                print((self.layer_part[self.start][2]))
+                print((self.layer_part[self.end][3]))
             for edge in wireframe.edges[self.layer_part[self.start][2]:self.layer_part[self.end][3]]:
                 pygame.draw.line(self.screen, self.edgeColour, (edge.start.x, edge.start.y), (edge.stop.x, edge.stop.y), 1)#width
                     
@@ -250,8 +250,8 @@ class ProjectionViewer:
             
         else:
             print('Showing one layer of one part already.')
-            print(self.start)
-            print(self.end)
+            print((self.start))
+            print((self.end))
             
     def shift_up(self):
         """ Shifts the layers being viewed up by one. """

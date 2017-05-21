@@ -21,12 +21,12 @@ in the pop-up window which is created.
 import math
 from typing import Callable
 
-import arc as a
-import constants as c
-from line import Line
-from linegroup import LineGroup
-from point import Point
-from outline import Outline
+from . import arc as a
+from . import constants as c
+from .line import Line
+from .linegroup import LineGroup
+from .point import Point
+from .outline import Outline
 
 def regularDogBone() ->Outline:    
     dogBone = Outline(None)

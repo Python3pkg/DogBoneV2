@@ -7,7 +7,7 @@ Used creating all of the lines of Gcode.
 @author: lvanhulle
 """
 from collections import defaultdict
-import constants as c
+from . import constants as c
 
 class Gcode:
     

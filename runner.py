@@ -4,12 +4,12 @@ Created on Thu Jun  9 13:12:35 2016
 @author: adiebold
 """
 
-import figura as fg
-from gcode import Gcode, RobotCode
+from . import figura as fg
+from .gcode import Gcode, RobotCode
 import time
-from parameters import Parameters
-import json
-import constants as c
+from .parameters import Parameters
+from . import json
+from . import constants as c
 
 class Runner:
     
@@ -35,8 +35,8 @@ class Runner:
         
         endTime = time.time()
         print('\nCode generated.')
-        print('Done writting: ' + self.pr.outputFileName + '\n')
-        print('{:.2f} total time'.format(endTime - startTime))
+        print(('Done writting: ' + self.pr.outputFileName + '\n'))
+        print(('{:.2f} total time'.format(endTime - startTime)))
         return fig.data_points
         """
         if c.LOG_LEVEL < c.logging.WARN:

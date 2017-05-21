@@ -4,26 +4,26 @@ Created on Wed Oct 28 10:16:22 2015
 
 @author: lvanhulle
 """
-from point import Point
-from infill import Infill
-from outline import Outline
-from line import Line
+from .point import Point
+from .infill import Infill
+from .outline import Outline
+from .line import Line
 #import arc as a
 import math
 import numpy as np
 import copy
-import gcode as gc
-import parameters as pr
-import constants as c
-from infill import Infill
+from . import gcode as gc
+from . import parameters as pr
+from . import constants as c
+from .infill import Infill
 from itertools import islice
-import linegroup as lg
-import doneshapes as ds
+from . import linegroup as lg
+from . import doneshapes as ds
 import itertools
 from operator import itemgetter
 import time
 import timeit
-import matrixTrans as mt
+from . import matrixTrans as mt
 import random
 import bisect
 import collections as col

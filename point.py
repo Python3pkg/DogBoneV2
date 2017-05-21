@@ -9,8 +9,8 @@ copy problems.
 @author: lvanhulle
 """
 import numpy
-import constants as c
-import matrixTrans as mt
+from . import constants as c
+from . import matrixTrans as mt
 
 
 class Point(object):

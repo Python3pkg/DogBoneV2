@@ -42,15 +42,15 @@ trimmed, and centered over trimOutline.
 @author: lvanhulle
 """
 
-from line import Line
-from point import Point
-from outline import Outline
-from linegroup import LineGroup
+from .line import Line
+from .point import Point
+from .outline import Outline
+from .linegroup import LineGroup
 import time
-import matrixTrans as mt
+from . import matrixTrans as mt
 import numpy as np
-import constants as c
-import doneshapes as ds
+from . import constants as c
+from . import doneshapes as ds
 
 class Infill(LineGroup):
     

@@ -7,11 +7,11 @@ A small module for easily creating arcs and circles.
 @author: lvanhulle
 """
 
-from linegroup import LineGroup as LG
+from .linegroup import LineGroup as LG
 import math
-from point import Point
-from line import Line
-import constants as c
+from .point import Point
+from .line import Line
+from . import constants as c
 
 class Arc(LG):
     

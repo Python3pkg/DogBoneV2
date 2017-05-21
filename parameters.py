@@ -14,14 +14,14 @@ import math
 import os
 import inspect
 
-import constants as c
-import doneshapes as ds
+from . import constants as c
+from . import doneshapes as ds
 
 class Parameters:
     
     def __init__(self, param_data, dropdown_data):
         
-        for key, value in param_data.items():
+        for key, value in list(param_data.items()):
             setattr(self, key, value)
         
         self.currPath = os.path.dirname(os.path.realpath(__file__))

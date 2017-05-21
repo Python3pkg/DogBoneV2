@@ -34,13 +34,13 @@ class Wireframe:
     def outputNodes(self):
         print("\n --- Nodes --- ")
         for i, node in enumerate(self.nodes):
-            print(" %d: (%.2f, %.2f, %.2f)" % (i, node.x, node.y, node.z))
+            print((" %d: (%.2f, %.2f, %.2f)" % (i, node.x, node.y, node.z)))
             
     def outputEdges(self):
         print("\n --- Edges --- ")
         for i, edge in enumerate(self.edges):
-            print(" %d: (%.2f, %.2f, %.2f)" % (i, edge.start.x, edge.start.y, edge.start.z),)
-            print("to (%.2f, %.2f, %.2f)" % (edge.stop.x,  edge.stop.y,  edge.stop.z))
+            print((" %d: (%.2f, %.2f, %.2f)" % (i, edge.start.x, edge.start.y, edge.start.z),))
+            print(("to (%.2f, %.2f, %.2f)" % (edge.stop.x,  edge.stop.y,  edge.stop.z)))
 
     def translate(self, axis, d):
         """ Add constant 'd' to the coordinate 'axis' of each node of a wireframe """

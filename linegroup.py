@@ -8,11 +8,11 @@ so they do not need to be calculated when called.
 
 @author: lvanhulle
 """
-from point import Point
-from line import Line
+from .point import Point
+from .line import Line
 import numpy as np
-import matrixTrans as mt
-import constants as c
+from . import matrixTrans as mt
+from . import constants as c
 from collections import namedtuple
 
 class LineGroup(object):

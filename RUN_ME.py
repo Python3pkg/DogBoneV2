@@ -6,16 +6,16 @@ Created on Sat May 28 16:39:58 2016
 
 import os
 
-import constants as c               
+from . import constants as c               
 from collections import namedtuple
 
 import tkinter as tk                #GUI module
 from tkinter import ttk             #for styling purposing
 from tkinter import filedialog      #window for saving and uploading files
-import json                         #for saving and uploading files
-from runner import Runner           #for converting to Gcode
-import parameters
-import doneshapes as ds
+from . import json                         #for saving and uploading files
+from .runner import Runner           #for converting to Gcode
+from . import parameters
+from . import doneshapes as ds
 import inspect
 data_points = []
 import time
@@ -23,7 +23,7 @@ import time
 import pygame
 #from pygame.locals import *
 
-from wireframe import Wireframe
+from .wireframe import Wireframe
 
 class GUI(tk.Tk):
 
@@ -207,7 +207,7 @@ class Page_Variables(tk.Frame):
                     self.all_vars[x][self.SAVED] = dropdown_defaults[x]
                     if dropdown.label in self.defaults:
                         self.all_vars[x][self.VAR] = self.defaults[dropdown.label]
-                    for key, value in dropdown_defaults[x].items():
+                    for key, value in list(dropdown_defaults[x].items()):
                         self.all_vars[x][self.KEYS].append(key)
                         self.all_vars[x][self.TYPES][key] = type(value)
         
@@ -382,7 +382,7 @@ class Page_Variables(tk.Frame):
             #checks if any values are entered
             if len(self.all_vars[x][self.SAVED]) > 0:
                 self.var_overall_label[x].grid(row=1+extra_shift, column=0)
-                for key, value in self.all_vars[x][self.SAVED].items():
+                for key, value in list(self.all_vars[x][self.SAVED].items()):
                     text_keys += '%10s ' % (key)
                     text_values += '%10s ' %(value)
                 self.var_text[x][self.KEYS].set(text_keys)
@@ -413,7 +413,7 @@ class Page_Variables(tk.Frame):
     #resets a specific doneshape menu's variables              
     def reset_certain_vars(self, vars_to_reset):
 
-        for key, value in self.all_vars[vars_to_reset].items():
+        for key, value in list(self.all_vars[vars_to_reset].items()):
             if type(value) == str:
                 value = ''
             elif type(value) == dict:
@@ -469,7 +469,7 @@ class Page_Variables(tk.Frame):
                 self.reset_certain_vars(dropdown_index)
                 self.all_vars[dropdown_index][self.VAR] = var
                       
-            for x, (key, value) in enumerate(self.annot.items()):
+            for x, (key, value) in enumerate(list(self.annot.items())):
                 if key != 'return':
                     self.all_vars[dropdown_index][self.KEYS].append(key)
                     self.all_vars[dropdown_index][self.TYPES][key] = value
@@ -509,7 +509,7 @@ class Page_Variables(tk.Frame):
                 self.all_vars[dropdown_index][self.ENTRIES][key].bind('<FocusOut>', default)
 
             buttonDestroy = ttk.Button(var_window, text='OK', command=quicksave)
-            buttonDestroy.grid(row=len(self.annot.items())+1, column=1)
+            buttonDestroy.grid(row=len(list(self.annot.items()))+1, column=1)
 
             #quicksaves if the user closes the window using a method other than the "OK" button
             var_window.protocol('WM_DELETE_WINDOW', quicksave)
@@ -662,13 +662,13 @@ class Page_Variables(tk.Frame):
                 if '.json' not in uploadname:
                     print('Error: this is not a JSON file. Please upload a JSON file.')
                 else:
-                    print('Error uploading file.\n', e)
+                    print(('Error uploading file.\n', e))
                     
             else:                
                 for x in range(len(self.dropdowns)):
                     self.reset_certain_vars(x)
                    
-                for key, value in data.items():    
+                for key, value in list(data.items()):    
                     if data[key] == None:
                         self.elements[key].text_variable.set('None') 
                     elif key == self.SHIFT:
@@ -681,7 +681,7 @@ class Page_Variables(tk.Frame):
                             self.elements[key].text_variable.set(os.path.basename(os.path.normpath(self.stl_path)))
                         else:
                             self.elements[key].text_variable.set(self.stl_path)
-                    elif key in self.elements.keys():
+                    elif key in list(self.elements.keys()):
                         value = str(value)
                         value = value.replace('[','').replace(']','')
                         self.elements[key].text_variable.set(value)  
@@ -692,7 +692,7 @@ class Page_Variables(tk.Frame):
                 for x, dropdown in enumerate(self.dropdowns):
                     del dropdown_data[x][c.THE_LABEL]
                     if len(dropdown_data[x]) > 0:
-                        for key, value in dropdown_data[x].items():
+                        for key, value in list(dropdown_data[x].items()):
                             self.all_vars[x][self.KEYS].append(key)
                             self.all_vars[x][self.SAVED][key] = value
                             self.all_vars[x][self.TYPES][key] = type(value)
@@ -895,7 +895,7 @@ class ProjectionViewer:
         for event in pygame.event.get():
             if event == pygame.MOUSEBUTTONUP:
                 break
-            print(startX, startY)
+            print((startX, startY))
             time.sleep(0.1)
             currX, currY = pygame.mouse.get_pos()
             self.translateAll('x', currX - startX)

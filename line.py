@@ -9,9 +9,9 @@ can be changed.
 
 @author: lvanhulle
 """
-import point as p
+from . import point as p
 import numpy as np
-import constants as c
+from . import constants as c
 import time
 logger = c.logging.getLogger(__name__)
 
@@ -369,5 +369,5 @@ class Line(object):
         return self.start.CSVstr() + ',' + self.end.CSVstr()
     
     def printBoudningBox(self):
-        print('Bounding Box for: ' + str(self))
-        print(str(self.upperLeft) + ', ' + str(self.lowerRight))
+        print(('Bounding Box for: ' + str(self)))
+        print((str(self.upperLeft) + ', ' + str(self.lowerRight)))

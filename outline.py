@@ -8,12 +8,12 @@ as they are fully enclosed inside of the boundary.
 
 @author: lvanhulle
 """
-from line import Line
-from linegroup import LineGroup
-import constants as c
+from .line import Line
+from .linegroup import LineGroup
+from . import constants as c
 from functools import wraps
 import numpy as np
-from point import Point
+from .point import Point
 from shapely.geometry.polygon import Polygon
 from shapely.ops import cascaded_union
 logger = c.logging.getLogger(__name__)
@@ -454,7 +454,7 @@ class Section:
         return final    
 
     def offset(self, dist, side):
-        union = self.re_union(filter(None, (j.offset(dist, side) for j in self.sidedPolygons)))
+        union = self.re_union([_f for _f in (j.offset(dist, side) for j in self.sidedPolygons) if _f])
         if not union:
             return None
         outline = Outline()
